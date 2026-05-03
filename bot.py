@@ -34,12 +34,12 @@ class RemoteLogBot:
         if self.buffer:
 
             current_log = "\n".join(self.buffer)
-            if len(current_log > 4000):
+            if len(current_log) > 4000:
                 current_log = current_log[:4000] + "\n... (Too long output)" 
                 
             try:
 
-                self.bot.send_message(self.admin_id, f"🟢 **New Log:**\n```{current_log}```", parse_mode='Markdown')
+                self.bot.send_message(self.admin_id, f"**New Log:**\n```\n{current_log}\n```", parse_mode='Markdown')
                 self.buffer = []
 
             except telebot.apihelper.ApiTelegramError as e:
